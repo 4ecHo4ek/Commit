@@ -92,18 +92,17 @@
         <scene sceneID="440-6H-20j">
             <objects>
                 <tableViewController id="B9y-xQ-lm3" customClass="NewCommitTableViewController" customModule="commit" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="02k-XP-VTu">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="02k-XP-VTu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
                             <tableViewSection headerTitle="Load image" id="BHd-61-3oF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="ESb-FC-k6R">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="200"/>
+                                        <rect key="frame" x="20" y="55.5" width="374" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ESb-FC-k6R" id="VDI-YU-6ge">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aQF-Dt-zpj">
@@ -114,16 +113,12 @@
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V5X-x9-OWl">
-                                                    <rect key="frame" x="214" y="83" width="180" height="34"/>
+                                                    <rect key="frame" x="214" y="83" width="140" height="34"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="180" id="aBa-Io-wba"/>
+                                                        <constraint firstAttribute="width" constant="140" id="aBa-Io-wba"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="imageName:" destination="B9y-xQ-lm3" eventType="editingDidEnd" id="EKg-r4-zwf"/>
-                                                        <action selector="imageName:" destination="CKa-H9-V4S" eventType="editingDidEnd" id="eph-ib-Mq7"/>
-                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -141,14 +136,14 @@
                             <tableViewSection headerTitle="Name (have to add)" id="YSq-ff-IAX">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="40" id="rDP-FA-J9X">
-                                        <rect key="frame" x="0.0" y="284" width="414" height="40"/>
+                                        <rect key="frame" x="20" y="311.5" width="374" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rDP-FA-J9X" id="T69-0M-X3k">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="opy-wg-DcO">
-                                                    <rect key="frame" x="20" y="3" width="374" height="34"/>
+                                                    <rect key="frame" x="20" y="3" width="334" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -169,14 +164,14 @@
                             <tableViewSection headerTitle="Description" id="Kfx-DQ-HuM">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="40" id="tm1-hT-44g">
-                                        <rect key="frame" x="0.0" y="380" width="414" height="40"/>
+                                        <rect key="frame" x="20" y="407.5" width="374" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tm1-hT-44g" id="gub-7n-zhG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8bf-HZ-59M">
-                                                    <rect key="frame" x="20" y="3" width="374" height="34"/>
+                                                    <rect key="frame" x="20" y="3" width="334" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -194,10 +189,10 @@
                             <tableViewSection headerTitle="Mark" id="tCe-YK-d4M">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="40" id="ulY-gh-grz">
-                                        <rect key="frame" x="0.0" y="476" width="414" height="40"/>
+                                        <rect key="frame" x="20" y="503.5" width="374" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ulY-gh-grz" id="2MO-19-BOX">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmx-ZI-EBI">
@@ -206,10 +201,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="V9Q-xI-jKq">
-                                                    <rect key="frame" x="96" y="5" width="300" height="31"/>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="V9Q-xI-jKq">
+                                                    <rect key="frame" x="96" y="5" width="260" height="31"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="296" id="VB1-8w-EhN"/>
+                                                        <constraint firstAttribute="width" constant="256" id="VB1-8w-EhN"/>
                                                     </constraints>
                                                     <connections>
                                                         <action selector="markSlider:" destination="B9y-xQ-lm3" eventType="valueChanged" id="h57-cp-hV9"/>
@@ -231,14 +226,14 @@
                             <tableViewSection headerTitle="Add info" id="3UQ-gt-NgF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="d8c-4A-wE4">
-                                        <rect key="frame" x="0.0" y="572" width="414" height="40"/>
+                                        <rect key="frame" x="20" y="599.5" width="374" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d8c-4A-wE4" id="D2T-0K-LU3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lFS-45-AD5">
-                                                    <rect key="frame" x="20" y="3" width="374" height="38"/>
+                                                    <rect key="frame" x="20" y="3" width="334" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -279,6 +274,7 @@
                         <outlet property="indoTF" destination="lFS-45-AD5" id="qhv-d6-got"/>
                         <outlet property="markTF" destination="Kmx-ZI-EBI" id="aCP-bC-I7m"/>
                         <outlet property="nameTF" destination="opy-wg-DcO" id="GJb-fh-Tu2"/>
+                        <outlet property="slider" destination="V9Q-xI-jKq" id="cpC-UY-HBF"/>
                         <outlet property="svaeButton" destination="J0p-Fp-3yu" id="K9t-tC-DLo"/>
                     </connections>
                 </tableViewController>

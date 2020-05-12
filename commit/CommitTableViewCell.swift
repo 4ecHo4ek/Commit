@@ -24,9 +24,6 @@ class CommitTableViewCell: UITableViewCell {
     }
     
     
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -31,7 +31,7 @@ class NewCommitTableViewController: UITableViewController {
     
     
     @IBAction func markSlider(_ sender: UISlider) {
-        markTF.text = String(round(slider.value))
+        markTF.text = String(Int(round(slider.value)))
     }
     
     
@@ -39,6 +39,7 @@ class NewCommitTableViewController: UITableViewController {
     @IBAction func hasName(_ sender: UITextField) {
         updateButton()
     }
+    
     
     private func updateButton() {
         let nameText = nameTF.text ?? ""
@@ -52,7 +53,7 @@ class NewCommitTableViewController: UITableViewController {
         markTF.text = String(commit.mark)
         indoTF.text = commit.info
         image.image = UIImage(systemName: commit.image)
-        slider.setValue(Float(commit.mark), animated: true)
+        slider.value = Float(commit.mark)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
