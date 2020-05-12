@@ -26,16 +26,14 @@ class CommitTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return commits.count
     }
     
-    
+    //установка значений в ячейки
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CommitTableViewCell
         let commit = commits[indexPath.row]
@@ -56,6 +54,7 @@ class CommitTableViewController: UITableViewController {
         return cell
     }
     
+    //метод по активации второго вью при нажатии на ячейку для реадктирования
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard segue.identifier == "editCommit" else { return }
@@ -67,7 +66,7 @@ class CommitTableViewController: UITableViewController {
         additingVC.title = "Edit"
     }
     
-    
+    //метод по возврату со второго вью на первый
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         guard segue.identifier == "save" else { return }
         let soursVC = segue.source as! NewCommitTableViewController
@@ -83,15 +82,12 @@ class CommitTableViewController: UITableViewController {
         }
     }
     
-    
-    
-    
-    
-    
+    //чтоб можно было удалять, хз для чего!!!!!!!!!!!!
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
+    //тут происходит удаление ячейки
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             commits.remove(at: indexPath.row)
@@ -99,35 +95,42 @@ class CommitTableViewController: UITableViewController {
         }
     }
     
+    //даем право двигать ячейки
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    //прописываем изменение движения ячеик и изменение цета при этом (быть аккуратнееб возможны баги!!!!!)
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let moveCommit = commits.remove(at: sourceIndexPath.row)
+        //изменение цвета при передвижении ячеик
+        self.tableView.cellForRow(at: sourceIndexPath)?.backgroundColor = .none
+        self.tableView.cellForRow(at: destinationIndexPath)?.backgroundColor = .none
+        self.tableView.reloadData()
+        
         commits.insert(moveCommit, at: destinationIndexPath.row)
         //MARK: при перемещении бесцветного cell он окрашивается, исправить
         tableView.reloadData()
     }
     
     
-    //MARK: moving cells
+    //рисуем при свайпе вправо
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let delete = deleteAction(at: indexPath)
+        //        let delete = deleteAction(at: indexPath)
         let color = makeColor(at: indexPath)
         return UISwipeActionsConfiguration(actions: [ color])
     }
     
-//    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
-//        let action = UIContextualAction(style: .destructive, title: "delete") { (action, view, complition) in
-//            self.commits.remove(at: indexPath.row)
-//            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-//            complition(true)
-//        }
-//        action.backgroundColor = .red
-//        action.image = UIImage(systemName: "delete.right")
-//        return action
-//    }
+    //    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+    //        let action = UIContextualAction(style: .destructive, title: "delete") { (action, view, complition) in
+    //            self.commits.remove(at: indexPath.row)
+    //            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+    //            complition(true)
+    //        }
+    //        action.backgroundColor = .red
+    //        action.image = UIImage(systemName: "delete.right")
+    //        return action
+    //    }
     
     func makeColor(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "color") { (action, view, complite) in
@@ -137,7 +140,7 @@ class CommitTableViewController: UITableViewController {
                 case 0...3:
                     self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemRed
                 case 4...6:
-                     self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemOrange
+                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemOrange
                 case 7...10:
                     self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemGreen
                 default:
@@ -153,6 +156,5 @@ class CommitTableViewController: UITableViewController {
         return action
     }
     
-    //переделать кнопку удаления, чтоб было удаление только от кнопки edit, другую возможность удалить - убрать
     
 }

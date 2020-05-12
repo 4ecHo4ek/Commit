@@ -29,23 +29,29 @@ class NewCommitTableViewController: UITableViewController {
         }
     }
     
-    
+    //выставление оценки в лейбл
     @IBAction func markSlider(_ sender: UISlider) {
         markTF.text = String(Int(round(slider.value)))
     }
     
+    //рисуем сразу после добавления фотографии (названия)
+    @IBAction func printImage(_ sender: UITextField) {
+        guard let print = imageName.text else { return }
+        image.image = UIImage(systemName: print)
+    }
     
     //проверяем на наличие записи в имени
     @IBAction func hasName(_ sender: UITextField) {
         updateButton()
     }
     
-    
+    //активация кнопки сохранить, если введено имя
     private func updateButton() {
         let nameText = nameTF.text ?? ""
         svaeButton.isEnabled = !nameText.isEmpty
     }
     
+    //высталвение значений при редактировании
     private func updateUI() {
         nameTF.text = commit.name
         imageName.text = commit.image
@@ -56,6 +62,7 @@ class NewCommitTableViewController: UITableViewController {
         slider.value = Float(commit.mark)
     }
     
+    //метод по обновлению информации в хранилище
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard segue.identifier == "save" else { return }
@@ -69,7 +76,7 @@ class NewCommitTableViewController: UITableViewController {
     }
     
     
-    
+    //подгрузка при созданни вида
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
