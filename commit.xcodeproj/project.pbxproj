@@ -15,6 +15,7 @@
 		3A41A3972469C9B900BF9638 /* CommitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41A3962469C9B900BF9638 /* CommitTableViewController.swift */; };
 		3A41A3992469CA1100BF9638 /* CommitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41A3982469CA1100BF9638 /* CommitTableViewCell.swift */; };
 		3A41A39B2469CFBD00BF9638 /* Commit'sClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41A39A2469CFBD00BF9638 /* Commit'sClass.swift */; };
+		3A45241F246ABBC000F791CE /* NewCommitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A45241E246ABBC000F791CE /* NewCommitTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3A41A3962469C9B900BF9638 /* CommitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitTableViewController.swift; sourceTree = "<group>"; };
 		3A41A3982469CA1100BF9638 /* CommitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitTableViewCell.swift; sourceTree = "<group>"; };
 		3A41A39A2469CFBD00BF9638 /* Commit'sClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit'sClass.swift"; sourceTree = "<group>"; };
+		3A45241E246ABBC000F791CE /* NewCommitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCommitTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				3A41A3842469C8B400BF9638 /* SceneDelegate.swift */,
 				3A41A3962469C9B900BF9638 /* CommitTableViewController.swift */,
 				3A41A3982469CA1100BF9638 /* CommitTableViewCell.swift */,
+				3A45241E246ABBC000F791CE /* NewCommitTableViewController.swift */,
 				3A41A39A2469CFBD00BF9638 /* Commit'sClass.swift */,
 				3A41A3882469C8B400BF9638 /* Main.storyboard */,
 				3A41A38B2469C8B500BF9638 /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 				3A41A39B2469CFBD00BF9638 /* Commit'sClass.swift in Sources */,
 				3A41A3992469CA1100BF9638 /* CommitTableViewCell.swift in Sources */,
 				3A41A3832469C8B400BF9638 /* AppDelegate.swift in Sources */,
+				3A45241F246ABBC000F791CE /* NewCommitTableViewController.swift in Sources */,
 				3A41A3972469C9B900BF9638 /* CommitTableViewController.swift in Sources */,
 				3A41A3852469C8B400BF9638 /* SceneDelegate.swift in Sources */,
 			);

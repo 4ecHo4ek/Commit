@@ -14,4 +14,5 @@ struct Commits {
     var mark: Int
     var image: String
     var haveColor: Bool
+    var info: String
 }

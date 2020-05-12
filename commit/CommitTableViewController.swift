@@ -11,9 +11,9 @@ import UIKit
 class CommitTableViewController: UITableViewController {
     
     var commits =
-        [Commits(name: "Good", description: "Very good", mark: 10, image: "bag", haveColor: true),
-         Commits(name: "Middle", description: "Middle one", mark: 5, image: "bag", haveColor: false),
-         Commits(name: "Bad", description: "Very bad", mark: 1, image: "bag", haveColor: true)]
+        [Commits(name: "Good", description: "Very good", mark: 10, image: "bag", haveColor: true, info: ""),
+         Commits(name: "Middle", description: "Middle one", mark: 5, image: "bag", haveColor: false, info: ""),
+         Commits(name: "Bad", description: "Very bad", mark: 1, image: "bag", haveColor: true, info: "")]
     
     
     override func viewDidLoad() {
@@ -56,6 +56,38 @@ class CommitTableViewController: UITableViewController {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        guard segue.identifier == "editCommit" else { return }
+        let indexPath = tableView.indexPathForSelectedRow!
+        let commit = commits[indexPath.row]
+        let navigationC = segue.destination as! UINavigationController
+        let additingVC = navigationC.topViewController as! NewCommitTableViewController
+        additingVC.commit = commit
+        additingVC.title = "Edit"
+    }
+    
+    
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        guard segue.identifier == "save" else { return }
+        let soursVC = segue.source as! NewCommitTableViewController
+        let commit = soursVC.commit
+        
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            commits[selectedIndexPath.row] = commit
+            tableView.reloadRows(at: [selectedIndexPath], with: .fade)
+        } else {
+            let newIndexPath = IndexPath(row: commits.count, section: 0)
+            commits.append(commit)
+            tableView.insertRows(at: [newIndexPath], with: .fade)
+        }
+    }
+    
+    
+    
+    
+    
+    
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
@@ -78,22 +110,24 @@ class CommitTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    
+    //MARK: moving cells
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = deleteAction(at: indexPath)
+//        let delete = deleteAction(at: indexPath)
         let color = makeColor(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [delete, color])
+        return UISwipeActionsConfiguration(actions: [ color])
     }
     
-    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "delete") { (action, view, complition) in
-            self.commits.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            complition(true)
-        }
-        action.backgroundColor = .red
-        action.image = UIImage(systemName: "delete.right")
-        return action
-    }
+//    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+//        let action = UIContextualAction(style: .destructive, title: "delete") { (action, view, complition) in
+//            self.commits.remove(at: indexPath.row)
+//            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+//            complition(true)
+//        }
+//        action.backgroundColor = .red
+//        action.image = UIImage(systemName: "delete.right")
+//        return action
+//    }
     
     func makeColor(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "color") { (action, view, complite) in
