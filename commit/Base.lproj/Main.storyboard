@@ -3,9 +3,125 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Color View Controller-->
+        <scene sceneID="ny4-NV-qEY">
+            <objects>
+                <viewController id="bMm-sb-yAK" customClass="ColorViewController" customModule="commit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MUD-Zd-BvM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eI2-69-K4c">
+                                <rect key="frame" x="107" y="138" width="200" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="l2k-Gb-DHy"/>
+                                    <constraint firstAttribute="height" constant="200" id="w64-yE-eqo"/>
+                                </constraints>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="oeA-Ni-aX9">
+                                <rect key="frame" x="82" y="523" width="250" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="246" id="QI4-Gn-cwN"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeColor:" destination="bMm-sb-yAK" eventType="valueChanged" id="WNE-OP-5n7"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DLD-EJ-Nyr">
+                                <rect key="frame" x="82" y="700" width="250" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="246" id="bBV-Ba-gTQ"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeColor:" destination="bMm-sb-yAK" eventType="valueChanged" id="Zay-lj-q0y"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DZO-aB-x80">
+                                <rect key="frame" x="-52" y="700" width="250" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="246" id="MNO-Cr-QV2"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeColor:" destination="bMm-sb-yAK" eventType="valueChanged" id="lxG-yI-YDn"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="cNS-lf-zVw">
+                                <rect key="frame" x="136" y="428" width="200" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="196" id="1i4-FY-qka"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeMark:" destination="bMm-sb-yAK" eventType="valueChanged" id="COd-Eh-U0C"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0..2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8J5-f7-Jq8">
+                                <rect key="frame" x="20" y="433" width="88" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hc4-Sp-d2w">
+                                <rect key="frame" x="216" y="700" width="250" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="246" id="Idu-26-xag"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeColor:" destination="bMm-sb-yAK" eventType="valueChanged" id="SdF-ek-FiN"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cNS-lf-zVw" firstAttribute="leading" secondItem="8J5-f7-Jq8" secondAttribute="trailing" constant="30" id="1Rd-xk-guX"/>
+                            <constraint firstItem="DZO-aB-x80" firstAttribute="leading" secondItem="MUD-Zd-BvM" secondAttribute="leading" constant="-50" id="264-2R-lDw"/>
+                            <constraint firstAttribute="trailing" secondItem="Hc4-Sp-d2w" secondAttribute="trailing" constant="-50" id="28c-0e-YSc"/>
+                            <constraint firstItem="Rz1-iN-moR" firstAttribute="trailing" secondItem="cNS-lf-zVw" secondAttribute="trailing" constant="80" id="6FL-3Q-tKj"/>
+                            <constraint firstItem="eI2-69-K4c" firstAttribute="centerX" secondItem="Rz1-iN-moR" secondAttribute="centerX" id="Cad-Wu-FSR"/>
+                            <constraint firstItem="DLD-EJ-Nyr" firstAttribute="top" secondItem="oeA-Ni-aX9" secondAttribute="bottom" constant="147" id="NbV-jz-Ukg"/>
+                            <constraint firstItem="DZO-aB-x80" firstAttribute="top" secondItem="oeA-Ni-aX9" secondAttribute="bottom" constant="147" id="SRP-kg-ut6"/>
+                            <constraint firstItem="8J5-f7-Jq8" firstAttribute="top" secondItem="Rz1-iN-moR" secondAttribute="top" constant="345" id="WRI-Xz-iOd"/>
+                            <constraint firstItem="eI2-69-K4c" firstAttribute="top" secondItem="Rz1-iN-moR" secondAttribute="top" constant="50" id="Wwr-9N-2kp"/>
+                            <constraint firstItem="cNS-lf-zVw" firstAttribute="top" secondItem="eI2-69-K4c" secondAttribute="bottom" constant="90" id="Yab-cT-JUG"/>
+                            <constraint firstItem="DLD-EJ-Nyr" firstAttribute="leading" secondItem="Rz1-iN-moR" secondAttribute="leading" constant="84" id="hgp-qX-daC"/>
+                            <constraint firstItem="oeA-Ni-aX9" firstAttribute="centerX" secondItem="Rz1-iN-moR" secondAttribute="centerX" id="kg6-mE-cHl"/>
+                            <constraint firstItem="8J5-f7-Jq8" firstAttribute="leading" secondItem="Rz1-iN-moR" secondAttribute="leading" constant="20" id="kxR-sL-2Qh"/>
+                            <constraint firstItem="oeA-Ni-aX9" firstAttribute="top" secondItem="cNS-lf-zVw" secondAttribute="bottom" constant="65" id="vuY-ie-g30"/>
+                            <constraint firstItem="Hc4-Sp-d2w" firstAttribute="top" secondItem="oeA-Ni-aX9" secondAttribute="bottom" constant="147" id="zv3-eT-HV5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rz1-iN-moR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Kuf-MR-QVl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="UYr-34-6Fo">
+                            <connections>
+                                <segue destination="eA0-Tj-QhC" kind="unwind" identifier="endChangeColor" unwindAction="unwindSegueWithSegue:" id="vcy-bf-zSZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="standart color" style="plain" id="5pU-lC-Gq4">
+                            <connections>
+                                <action selector="setStandart:" destination="bMm-sb-yAK" id="aQe-aV-OrQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="alphaSlide" destination="oeA-Ni-aX9" id="onX-KN-yfX"/>
+                        <outlet property="blueSlide" destination="Hc4-Sp-d2w" id="yLr-E6-pjU"/>
+                        <outlet property="colorView" destination="eI2-69-K4c" id="j6T-FS-hzI"/>
+                        <outlet property="greenSlide" destination="DLD-EJ-Nyr" id="fgm-Bf-lhC"/>
+                        <outlet property="markLabel" destination="8J5-f7-Jq8" id="mWf-dz-Bdc"/>
+                        <outlet property="markSlide" destination="cNS-lf-zVw" id="0Gm-rI-b3a"/>
+                        <outlet property="redSlide" destination="DZO-aB-x80" id="9PZ-P0-PXt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="foO-ag-Ffk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="eA0-Tj-QhC" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1874" y="818"/>
+        </scene>
         <!--Commit Table View Controller-->
         <scene sceneID="R3L-Jn-mZL">
             <objects>
@@ -80,12 +196,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="z95-zW-kFv">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="R83-G6-Aeh">
-                            <connections>
-                                <segue destination="5nQ-4x-bAr" kind="show" identifier="" id="jbL-lV-xxf"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="R83-G6-Aeh">
+                                <connections>
+                                    <segue destination="5nQ-4x-bAr" kind="show" identifier="" id="jbL-lV-xxf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Color" id="lzD-S5-8jx">
+                                <connections>
+                                    <segue destination="bMm-sb-yAK" kind="show" id="koX-Rf-ECL"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <segue destination="bMm-sb-yAK" kind="show" identifier="changeColor" id="PLd-tY-FUO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPf-Lf-oY1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -329,6 +455,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="q7O-5k-OwO"/>
+        <segue reference="jbL-lV-xxf"/>
+        <segue reference="PLd-tY-FUO"/>
     </inferredMetricsTieBreakers>
 </document>

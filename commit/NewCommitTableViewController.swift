@@ -12,8 +12,6 @@ class NewCommitTableViewController: UITableViewController {
     
     var commit = Commits(name: "", description: "", mark: 0, image: "", haveColor: false, info: "")
     
-    
-    
     @IBOutlet weak var svaeButton: UIBarButtonItem!
     @IBOutlet weak var imageName: UITextField!
     @IBOutlet weak var image: UIImageView!

@@ -10,10 +10,21 @@ import UIKit
 
 class CommitTableViewController: UITableViewController {
     
+    var color = Color(redColor: 0, greenColor: 0, blueColor: 0, alpha: 0)
+    var colors = [Color(redColor: 1, greenColor: 0, blueColor: 0, alpha: 0.5),
+                  Color(redColor: 1, greenColor: 0.5, blueColor: 0, alpha: 0.5),
+                  Color(redColor: 1, greenColor: 1, blueColor: 0.5, alpha: 0.5),
+                  Color(redColor: 0.5, greenColor: 1, blueColor: 0.5, alpha: 0.5),
+                  Color(redColor: 0, greenColor: 1, blueColor: 0, alpha: 0.5)]
+    
     var commits =
         [Commits(name: "Good", description: "Very good", mark: 10, image: "bag", haveColor: true, info: ""),
          Commits(name: "Middle", description: "Middle one", mark: 5, image: "bag", haveColor: false, info: ""),
          Commits(name: "Bad", description: "Very bad", mark: 1, image: "bag", haveColor: true, info: "")]
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -39,21 +50,27 @@ class CommitTableViewController: UITableViewController {
         let commit = commits[indexPath.row]
         cell.set(commit: commit)
         //делаем цвет, зависящий от отзыва
+        var id = 0
         if commit.haveColor {
             switch commit.mark {
-            case 0...3:
-                cell.backgroundColor = .systemRed
-            case 4...6:
-                cell.backgroundColor = .systemOrange
-            case 7...10:
-                cell.backgroundColor = .systemGreen
+            case 0...2:
+                id = 0
+            case 3...4:
+                id = 1
+            case 5...6:
+                id = 2
+            case 7...8:
+                id = 3
+            case 9...10:
+                id = 4
             default:
                 cell.backgroundColor = .systemGray
             }
+            cell.backgroundColor = UIColor(red: CGFloat(colors[id].redColor), green: CGFloat(colors[id].greenColor), blue: CGFloat(colors[id].blueColor), alpha: CGFloat(colors[id].alpha))
         }
         return cell
     }
-    
+    //MARK: связать измененные цвета первого и второго контроллеров
     //метод по активации второго вью при нажатии на ячейку для реадктирования
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -64,6 +81,12 @@ class CommitTableViewController: UITableViewController {
         let additingVC = navigationC.topViewController as! NewCommitTableViewController
         additingVC.commit = commit
         additingVC.title = "Edit"
+        
+        //добавляем переход на окно редактирования цвета
+        guard segue.identifier == "changeColor" else { return }
+        let colorVC = segue.destination as! ColorViewController 
+        colorVC.colors = colors
+        colorVC.title = "Find your color"
     }
     
     //метод по возврату со второго вью на первый
@@ -80,6 +103,11 @@ class CommitTableViewController: UITableViewController {
             commits.append(commit)
             tableView.insertRows(at: [newIndexPath], with: .fade)
         }
+        
+        //возвращение с настройки цветов
+        guard segue.identifier == "endChangeColor" else { return }
+        let colorVC = segue.source as! ColorViewController
+        colors = colorVC.colors
     }
     
     //чтоб можно было удалять, хз для чего!!!!!!!!!!!!
@@ -132,6 +160,7 @@ class CommitTableViewController: UITableViewController {
     //        return action
     //    }
     
+    //MARK: тут менять вывод цвета
     func makeColor(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "color") { (action, view, complite) in
             self.commits[indexPath.row].haveColor = !self.commits[indexPath.row].haveColor

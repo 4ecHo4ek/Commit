@@ -16,3 +16,12 @@ struct Commits {
     var haveColor: Bool
     var info: String
 }
+
+
+
+struct Color {
+    var redColor: Float
+    var greenColor: Float
+    var blueColor: Float
+    var alpha: Float
+}
