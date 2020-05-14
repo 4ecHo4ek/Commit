@@ -120,7 +120,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foO-ag-Ffk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="eA0-Tj-QhC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1874" y="818"/>
+            <point key="canvasLocation" x="2784" y="832"/>
         </scene>
         <!--Commit Table View Controller-->
         <scene sceneID="R3L-Jn-mZL">
@@ -204,14 +204,11 @@
                             </barButtonItem>
                             <barButtonItem title="Color" id="lzD-S5-8jx">
                                 <connections>
-                                    <segue destination="bMm-sb-yAK" kind="show" id="koX-Rf-ECL"/>
+                                    <segue destination="rlW-we-nPp" kind="show" identifier="changeColor" id="7bE-lX-uJc"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <connections>
-                        <segue destination="bMm-sb-yAK" kind="show" identifier="changeColor" id="PLd-tY-FUO"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPf-Lf-oY1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -453,9 +450,27 @@
             </objects>
             <point key="canvasLocation" x="1873.913043478261" y="96.428571428571431"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zvs-YR-X2L">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rlW-we-nPp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Luh-pD-ArH"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vgU-7n-PFz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bMm-sb-yAK" kind="relationship" relationship="rootViewController" id="xrS-PE-IYO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cqi-k7-KuQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1874" y="833"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jbL-lV-xxf"/>
-        <segue reference="PLd-tY-FUO"/>
+        <segue reference="q7O-5k-OwO"/>
     </inferredMetricsTieBreakers>
 </document>

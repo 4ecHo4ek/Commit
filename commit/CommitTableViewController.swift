@@ -70,28 +70,34 @@ class CommitTableViewController: UITableViewController {
         }
         return cell
     }
+    
+    
     //MARK: связать измененные цвета первого и второго контроллеров
     //метод по активации второго вью при нажатии на ячейку для реадктирования
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        guard segue.identifier == "editCommit" else { return }
+        //guard segue.identifier == "editCommit" else { return }
+        if segue.identifier == "editCommit" {
         let indexPath = tableView.indexPathForSelectedRow!
         let commit = commits[indexPath.row]
-        let navigationC = segue.destination as! UINavigationController
-        let additingVC = navigationC.topViewController as! NewCommitTableViewController
-        additingVC.commit = commit
-        additingVC.title = "Edit"
-        
+        let navigationAC = segue.destination as! UINavigationController
+        let additingAVC = navigationAC.topViewController as! NewCommitTableViewController
+        additingAVC.commit = commit
+        additingAVC.title = "Edit"
+        } else {
         //добавляем переход на окно редактирования цвета
         guard segue.identifier == "changeColor" else { return }
-        let colorVC = segue.destination as! ColorViewController 
-        colorVC.colors = colors
-        colorVC.title = "Find your color"
+        let navigationCVC = segue.destination as! UINavigationController
+        let colorCVC = navigationCVC.topViewController as! ColorViewController
+        colorCVC.colors = colors
+        colorCVC.title = "Find your color"
+        }
     }
     
     //метод по возврату со второго вью на первый
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
-        guard segue.identifier == "save" else { return }
+       // guard segue.identifier == "save" else { return }
+        if segue.identifier == "save" {
         let soursVC = segue.source as! NewCommitTableViewController
         let commit = soursVC.commit
         
@@ -103,11 +109,14 @@ class CommitTableViewController: UITableViewController {
             commits.append(commit)
             tableView.insertRows(at: [newIndexPath], with: .fade)
         }
-        
+        } else {
         //возвращение с настройки цветов
         guard segue.identifier == "endChangeColor" else { return }
         let colorVC = segue.source as! ColorViewController
         colors = colorVC.colors
+        
+        tableView.reloadData()
+        }
     }
     
     //чтоб можно было удалять, хз для чего!!!!!!!!!!!!
@@ -185,5 +194,25 @@ class CommitTableViewController: UITableViewController {
         return action
     }
     
+//    private func setColor() {
+//
+//       switch self.self.commits[indexPath.row].mark {
+//                case 0...3:
+//                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemRed
+//                case 4...6:
+//                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemOrange
+//                case 7...10:
+//                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemGreen
+//                default:
+//                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemGray
+//                }
+//            } else {
+//                self.tableView.cellForRow(at: indexPath)?.backgroundColor = .none
+//            }
+//            self.tableView.reloadData()
+//        }
+//
+//
+//    }
     
 }
