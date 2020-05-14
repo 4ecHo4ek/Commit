@@ -18,9 +18,9 @@ class CommitTableViewController: UITableViewController {
                   Color(redColor: 0, greenColor: 1, blueColor: 0, alpha: 0.5)]
     
     var commits =
-        [Commits(name: "Good", description: "Very good", mark: 10, image: "bag", haveColor: true, info: ""),
-         Commits(name: "Middle", description: "Middle one", mark: 5, image: "bag", haveColor: false, info: ""),
-         Commits(name: "Bad", description: "Very bad", mark: 1, image: "bag", haveColor: true, info: "")]
+        [Commits(name: "Good", description: "Very good", mark: 10, image: "bag", haveColor: true),
+         Commits(name: "Middle", description: "Middle one", mark: 5, image: "bag", haveColor: false),
+         Commits(name: "Bad", description: "Very bad", mark: 1, image: "bag", haveColor: true)]
     
     
     
@@ -50,27 +50,33 @@ class CommitTableViewController: UITableViewController {
         let commit = commits[indexPath.row]
         cell.set(commit: commit)
         //делаем цвет, зависящий от отзыва
-        var id = 0
         if commit.haveColor {
-            switch commit.mark {
-            case 0...2:
-                id = 0
-            case 3...4:
-                id = 1
-            case 5...6:
-                id = 2
-            case 7...8:
-                id = 3
-            case 9...10:
-                id = 4
-            default:
-                cell.backgroundColor = .systemGray
-            }
+            let id = setColor(mark: commit.mark)
             cell.backgroundColor = UIColor(red: CGFloat(colors[id].redColor), green: CGFloat(colors[id].greenColor), blue: CGFloat(colors[id].blueColor), alpha: CGFloat(colors[id].alpha))
         }
         return cell
     }
     
+    private func setColor(mark: Int ) -> Int {
+        var id = 0
+        
+        switch mark {
+        case 0...2:
+            id = 0
+        case 3...4:
+            id = 1
+        case 5...6:
+            id = 2
+        case 7...8:
+            id = 3
+        case 9...10:
+            id = 4
+        default:
+            id = 0
+        }
+
+        return id
+    }
     
     //MARK: связать измененные цвета первого и второго контроллеров
     //метод по активации второго вью при нажатии на ячейку для реадктирования
@@ -143,9 +149,30 @@ class CommitTableViewController: UITableViewController {
         //изменение цвета при передвижении ячеик
         self.tableView.cellForRow(at: sourceIndexPath)?.backgroundColor = .none
         self.tableView.cellForRow(at: destinationIndexPath)?.backgroundColor = .none
-        self.tableView.reloadData()
-        
         commits.insert(moveCommit, at: destinationIndexPath.row)
+        
+        //перезакраска ячеик
+        if sourceIndexPath.row > destinationIndexPath.row {
+            for element in 0...sourceIndexPath.row {
+                 if self.commits[element].haveColor {
+                    let id = self.setColor(mark: self.commits[element].mark)
+                self.tableView.cellForRow(at: IndexPath(row: element, section: 0))?.backgroundColor = UIColor(red: CGFloat(self.colors[id].redColor), green: CGFloat(self.colors[id].greenColor), blue: CGFloat(self.colors[id].blueColor), alpha: CGFloat(self.colors[id].alpha))
+                } else {
+                self.tableView.cellForRow(at: IndexPath(row: element, section: 0))?.backgroundColor = .none//
+                }
+            }
+        } else {
+            for element in 0...destinationIndexPath.row {
+                if self.commits[element].haveColor { //
+                let id = self.setColor(mark: self.commits[element].mark)
+                self.tableView.cellForRow(at: IndexPath(row: element, section: 0))?.backgroundColor = UIColor(red: CGFloat(self.colors[id].redColor), green: CGFloat(self.colors[id].greenColor), blue: CGFloat(self.colors[id].blueColor), alpha: CGFloat(self.colors[id].alpha))
+                } else {//
+                    self.tableView.cellForRow(at: IndexPath(row: element, section: 0))?.backgroundColor = .none//
+                }
+            }
+        }
+        
+        
         //MARK: при перемещении бесцветного cell он окрашивается, исправить
         tableView.reloadData()
     }
@@ -153,66 +180,28 @@ class CommitTableViewController: UITableViewController {
     
     //рисуем при свайпе вправо
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //        let delete = deleteAction(at: indexPath)
         let color = makeColor(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [ color])
+        return UISwipeActionsConfiguration(actions: [color])
     }
     
-    //    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
-    //        let action = UIContextualAction(style: .destructive, title: "delete") { (action, view, complition) in
-    //            self.commits.remove(at: indexPath.row)
-    //            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-    //            complition(true)
-    //        }
-    //        action.backgroundColor = .red
-    //        action.image = UIImage(systemName: "delete.right")
-    //        return action
-    //    }
     
     //MARK: тут менять вывод цвета
+    //при перемещении ячейки неокрашенной на место окрашенной, она окрашивается
     func makeColor(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "color") { (action, view, complite) in
             self.commits[indexPath.row].haveColor = !self.commits[indexPath.row].haveColor
             if self.commits[indexPath.row].haveColor {
-                switch self.self.commits[indexPath.row].mark {
-                case 0...3:
-                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemRed
-                case 4...6:
-                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemOrange
-                case 7...10:
-                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemGreen
-                default:
-                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemGray
-                }
+                let id = self.setColor(mark: self.commits[indexPath.row].mark)
+                self.tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor(red: CGFloat(self.colors[id].redColor), green: CGFloat(self.colors[id].greenColor), blue: CGFloat(self.colors[id].blueColor), alpha: CGFloat(self.colors[id].alpha))
             } else {
                 self.tableView.cellForRow(at: indexPath)?.backgroundColor = .none
             }
-            self.tableView.reloadData()
         }
         action.backgroundColor = .blue
+        self.tableView.reloadData()
         action.image = UIImage(systemName: "paintbrush")
         return action
     }
-    
-//    private func setColor() {
-//
-//       switch self.self.commits[indexPath.row].mark {
-//                case 0...3:
-//                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemRed
-//                case 4...6:
-//                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemOrange
-//                case 7...10:
-//                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemGreen
-//                default:
-//                    self.tableView.cellForRow(at: indexPath)?.backgroundColor = .systemGray
-//                }
-//            } else {
-//                self.tableView.cellForRow(at: indexPath)?.backgroundColor = .none
-//            }
-//            self.tableView.reloadData()
-//        }
-//
-//
-//    }
+  
     
 }

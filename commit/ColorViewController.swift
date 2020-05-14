@@ -29,6 +29,8 @@ class ColorViewController: UIViewController {
     @IBOutlet weak var alphaSlide: UISlider!
     @IBOutlet weak var markSlide: UISlider!
     
+    @IBAction func showColor(_ sender: UISwitch) {
+    }
     @IBAction func setStandart(_ sender: UIBarButtonItem) {
         var (r,g,b): (Float, Float, Float) = (0,0,0)
         switch id {

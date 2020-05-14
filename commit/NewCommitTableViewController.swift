@@ -10,14 +10,13 @@ import UIKit
 
 class NewCommitTableViewController: UITableViewController {
     
-    var commit = Commits(name: "", description: "", mark: 0, image: "", haveColor: false, info: "")
+    var commit = Commits(name: "", description: "", mark: 0, image: "", haveColor: false)
     
     @IBOutlet weak var svaeButton: UIBarButtonItem!
     @IBOutlet weak var imageName: UITextField!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var descriptionTF: UITextField!
-    @IBOutlet weak var indoTF: UITextField!
     @IBOutlet weak var markTF: UILabel!
     @IBOutlet weak var slider: UISlider! {
         didSet {
@@ -26,6 +25,9 @@ class NewCommitTableViewController: UITableViewController {
             slider.value = 0
         }
     }
+    
+    @IBOutlet weak var showColor: UISwitch!
+    
     
     //выставление оценки в лейбл
     @IBAction func markSlider(_ sender: UISlider) {
@@ -55,9 +57,9 @@ class NewCommitTableViewController: UITableViewController {
         imageName.text = commit.image
         descriptionTF.text = commit.description
         markTF.text = String(commit.mark)
-        indoTF.text = commit.info
         image.image = UIImage(systemName: commit.image)
         slider.value = Float(commit.mark)
+        showColor.isOn = commit.haveColor
     }
     
     //метод по обновлению информации в хранилище
@@ -68,9 +70,8 @@ class NewCommitTableViewController: UITableViewController {
         let description = descriptionTF.text ?? ""
         let mark = Int(markTF.text ?? "")
         let image = imageName.text ?? ""
-        let info = indoTF.text ?? ""
         
-        self.commit = Commits(name: name, description: description, mark: mark ?? 0, image: image, haveColor: false, info: info)
+        self.commit = Commits(name: name, description: description, mark: mark ?? 0, image: image, haveColor: showColor.isOn)
     }
     
     
