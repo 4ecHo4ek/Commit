@@ -74,6 +74,10 @@ class NewCommitTableViewController: UITableViewController {
     }
     
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     //подгрузка при созданни вида
     override func viewDidLoad() {
         super.viewDidLoad()
