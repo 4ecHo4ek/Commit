@@ -15,6 +15,9 @@
 		3A41A3972469C9B900BF9638 /* CommitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41A3962469C9B900BF9638 /* CommitTableViewController.swift */; };
 		3A41A3992469CA1100BF9638 /* CommitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41A3982469CA1100BF9638 /* CommitTableViewCell.swift */; };
 		3A41A39B2469CFBD00BF9638 /* Commit'sClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A41A39A2469CFBD00BF9638 /* Commit'sClass.swift */; };
+		3A4374252472DF540052D598 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4374242472DF540052D598 /* CoreDataStack.swift */; };
+		3A4374282472E2F90052D598 /* commitData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A4374262472E2F90052D598 /* commitData.xcdatamodeld */; };
+		3A43742A2472E3A30052D598 /* clolorData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A4374292472E3A30052D598 /* clolorData.plist */; };
 		3A438893246C3D2A003AD199 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A438892246C3D2A003AD199 /* ColorViewController.swift */; };
 		3A45241F246ABBC000F791CE /* NewCommitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A45241E246ABBC000F791CE /* NewCommitTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +33,9 @@
 		3A41A3962469C9B900BF9638 /* CommitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitTableViewController.swift; sourceTree = "<group>"; };
 		3A41A3982469CA1100BF9638 /* CommitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitTableViewCell.swift; sourceTree = "<group>"; };
 		3A41A39A2469CFBD00BF9638 /* Commit'sClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit'sClass.swift"; sourceTree = "<group>"; };
+		3A4374242472DF540052D598 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		3A4374272472E2F90052D598 /* commitData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = commitData.xcdatamodel; sourceTree = "<group>"; };
+		3A4374292472E3A30052D598 /* clolorData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = clolorData.plist; sourceTree = "<group>"; };
 		3A438892246C3D2A003AD199 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		3A45241E246ABBC000F791CE /* NewCommitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCommitTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +72,7 @@
 			children = (
 				3A41A3822469C8B400BF9638 /* AppDelegate.swift */,
 				3A41A3842469C8B400BF9638 /* SceneDelegate.swift */,
+				3A4374242472DF540052D598 /* CoreDataStack.swift */,
 				3A41A3962469C9B900BF9638 /* CommitTableViewController.swift */,
 				3A41A3982469CA1100BF9638 /* CommitTableViewCell.swift */,
 				3A45241E246ABBC000F791CE /* NewCommitTableViewController.swift */,
@@ -74,7 +81,9 @@
 				3A41A3882469C8B400BF9638 /* Main.storyboard */,
 				3A41A38B2469C8B500BF9638 /* Assets.xcassets */,
 				3A41A38D2469C8B500BF9638 /* LaunchScreen.storyboard */,
+				3A4374292472E3A30052D598 /* clolorData.plist */,
 				3A41A3902469C8B500BF9638 /* Info.plist */,
+				3A4374262472E2F90052D598 /* commitData.xcdatamodeld */,
 			);
 			path = commit;
 			sourceTree = "<group>";
@@ -140,6 +149,7 @@
 				3A41A38F2469C8B500BF9638 /* LaunchScreen.storyboard in Resources */,
 				3A41A38C2469C8B500BF9638 /* Assets.xcassets in Resources */,
 				3A41A38A2469C8B400BF9638 /* Main.storyboard in Resources */,
+				3A43742A2472E3A30052D598 /* clolorData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,8 +165,10 @@
 				3A41A3832469C8B400BF9638 /* AppDelegate.swift in Sources */,
 				3A45241F246ABBC000F791CE /* NewCommitTableViewController.swift in Sources */,
 				3A438893246C3D2A003AD199 /* ColorViewController.swift in Sources */,
+				3A4374282472E2F90052D598 /* commitData.xcdatamodeld in Sources */,
 				3A41A3972469C9B900BF9638 /* CommitTableViewController.swift in Sources */,
 				3A41A3852469C8B400BF9638 /* SceneDelegate.swift in Sources */,
+				3A4374252472DF540052D598 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +368,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3A4374262472E2F90052D598 /* commitData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3A4374272472E2F90052D598 /* commitData.xcdatamodel */,
+			);
+			currentVersion = 3A4374272472E2F90052D598 /* commitData.xcdatamodel */;
+			path = commitData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3A41A3772469C8B400BF9638 /* Project object */;
 }

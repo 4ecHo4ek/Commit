@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CommitTableViewController: UITableViewController {
     
@@ -21,6 +22,18 @@ class CommitTableViewController: UITableViewController {
         [Commits(name: "Good", description: "Very good", mark: 10, image: "bag", haveColor: true),
          Commits(name: "Middle", description: "Middle one", mark: 5, image: "bag", haveColor: false),
          Commits(name: "Bad", description: "Very bad", mark: 1, image: "bag", haveColor: true)]
+    
+    
+    var context: NSManagedObjectContext!
+    
+    //достаем цвета MARK: start here
+    private func getColorsFromFile() {
+        
+        guard let pathToFileWithColors = Bundle.main.path(forResource: "colorData", ofType: "plist"),
+            let colorArray = NSArray(contentsOfFile: pathToFileWithColors) else { return }
+        
+    }
+    
     
     
     
